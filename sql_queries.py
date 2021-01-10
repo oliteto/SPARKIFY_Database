@@ -1,10 +1,10 @@
 # DROP TABLES
 
-songplay_table_drop = ""
-user_table_drop = ""
-song_table_drop = ""
-artist_table_drop = ""
-time_table_drop = ""
+songplay_table_drop = "DROP table IF EXISTS songplay"
+user_table_drop = "DROP table IF EXISTS user"
+song_table_drop = "DROP table IF EXISTS song"
+artist_table_drop = "DROP table IF EXISTS artist"
+time_table_drop = "DROP table IF EXISTS time"
 
 # CREATE TABLES
 
