@@ -117,7 +117,7 @@ artist_table_insert = ("""
         artist_id, 
         name, 
         location, 
-        lattitude, 
+        latitude, 
         longitude
     )
         VALUES (%s, %s, %s, %s, %s);
