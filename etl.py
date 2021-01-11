@@ -45,7 +45,7 @@ def process_log_file(cur, filepath):
 
     time_data = [df['ts'], hour, day, weekofyear, month, year, weekday]
     column_labels = ['timestamp', 'hour', 'day', 'week of year', 'month', 'year', 'weekday']
-    time_df = pd.DataFrame.from_dict(dict(zip(column_labels, time_data)))
+    time_df = pd.DataFrame(dict(zip(column_labels, time_data)))
 
     for i, row in time_df.iterrows():
         cur.execute(time_table_insert, list(row))
