@@ -1,4 +1,8 @@
-# SPARKIFY_Database
+# Sparkify Database
+
+# Database star schema
+
+![diagramm](pictures/Sparkify_diagram.png)
 
 https://www.postgresql.org/docs/9.1/datatype-datetime.html
 
