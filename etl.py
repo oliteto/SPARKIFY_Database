@@ -36,14 +36,8 @@ def process_log_file(cur, filepath):
     t = pd.to_datetime(df['ts'], unit='ms')
     
     # insert time data records
-    hour = t.dt.hour
-    day = t.dt.day
-    weekofyear = t.dt.weekofyear
-    month = t.dt.month
-    year = t.dt.year
-    weekday = t.dt.weekday
 
-    time_data = [df['ts'], hour, day, weekofyear, month, year, weekday]
+    time_data = [t, t.dt.hour, t.dt.day, t.dt.weekofyear, t.dt.month, t.dt.year, t.dt.weekday]
     column_labels = ['timestamp', 'hour', 'day', 'week of year', 'month', 'year', 'weekday']
     time_df = pd.DataFrame(dict(zip(column_labels, time_data)))
 
