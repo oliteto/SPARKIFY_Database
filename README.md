@@ -13,7 +13,7 @@ In this project, I'll apply what I've learned on data modeling with Postgres and
 
 # Files
 + create_tables.py
-+ sql_queries.py 
++ sql_queries.py
 + etl.py
 + /data/
 
@@ -22,10 +22,10 @@ In this project, I'll apply what I've learned on data modeling with Postgres and
 1. Run create_tables.py 
 2. Run etl.py  
 
-# Documentation I used
+# Enviroment 
 
-https://www.postgresql.org/
-
+1. Python 3 
+2. Postgres  
 
 
 
