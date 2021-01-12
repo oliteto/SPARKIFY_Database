@@ -26,7 +26,7 @@ songplay_table_create = ("""
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS users 
     (
-        user_id varchar PRIMARY KEY,
+        user_id varchar,
         first_name varchar, 
         last_name varchar, 
         gender varchar, 
@@ -37,7 +37,7 @@ user_table_create = ("""
 song_table_create = ("""
     CREATE TABLE IF NOT EXISTS songs
     (
-        song_id varchar PRIMARY KEY , 
+        song_id varchar, 
         title varchar, 
         artist_id varchar, 
         year int, 
@@ -140,6 +140,10 @@ time_table_insert = ("""
 # FIND SONGS
 
 song_select = ("""
+    SELECT songs.song_id, songs.artist_id                          
+      FROM songs JOIN artists 
+        ON songs.artist_id = artists.artist_id 
+     WHERE songs.title = %s AND artists.name = %s AND songs.duration = %s;                 
 """)
 
 # QUERY LISTS
