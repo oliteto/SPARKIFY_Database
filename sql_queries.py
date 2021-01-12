@@ -13,11 +13,11 @@ songplay_table_create = ("""
     (
         songplay_id int,
         start_time timestamp,
-        user_id varchar,
+        user_id int,
         level varchar, 
         song_id varchar,
         artist_id varchar,
-        session_id varchar,
+        session_id int,
         location varchar,
         user_agent varchar
     );
@@ -26,10 +26,10 @@ songplay_table_create = ("""
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS users 
     (
-        user_id varchar,
+        user_id int,
         first_name varchar, 
         last_name varchar, 
-        gender varchar, 
+        gender char, 
         level varchar
     );
 """)
@@ -141,7 +141,8 @@ time_table_insert = ("""
 
 song_select = ("""
     SELECT songs.song_id, songs.artist_id                          
-      FROM songs JOIN artists 
+      FROM songs 
+      JOIN artists 
         ON songs.artist_id = artists.artist_id 
      WHERE songs.title = %s AND artists.name = %s AND songs.duration = %s;                 
 """)
