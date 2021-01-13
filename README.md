@@ -7,24 +7,31 @@ A startup called Sparkify wants to analyze the data they've been collecting on s
 ## Project Description
 In this project, I'll apply what I've learned on data modeling with Postgres and build an ETL pipeline using Python. To complete the project, I will need to define fact and dimension tables for a star schema for a particular analytic focus, and write an ETL pipeline that transfers data from files in two local directories into these tables in Postgres using Python and SQL.
 
-# Database star schema
+# Database Schemas
+## Fact Table
++ songplay
+## Dimension Tables
++ users
++ songs
++ artists
++ time
 
 ![diagramm](pictures/Sparkify_diagram.png)
 
 # Files
-+ create_tables.py
-+ sql_queries.py
-+ etl.py
++ create_tables.py -- drops and creates the tables. 
++ etl.py -- reads and processes files from song_data and log_data and loads them into the tables.
++ sql_queries.py -- contains all the sql queries, and is imported into create_tables.py and etl.py.
 + /data/
 
-# How to use
+# How to Run
 
 1. Run create_tables.py 
 2. Run etl.py  
 
 # Enviroment 
 
-1. Python 3 
+1. Python 3 (with Pandas and psycopg2)
 2. Postgres  
 
 
