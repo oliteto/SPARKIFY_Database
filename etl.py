@@ -7,7 +7,11 @@ from sql_queries import *
 
 def process_song_file(cur, filepath):
     """
-    Load and process JSONs song files
+    Load a JSON file and insert data into song and artist tables.
+
+    Keyword arguments:
+    cur --  cursor (psycopg2)
+    filepath -- JSON file path 
     """
     # open song file
     df = pd.read_json(filepath, lines=True)
@@ -23,7 +27,11 @@ def process_song_file(cur, filepath):
 
 def process_log_file(cur, filepath):
     """
-    Load and process JSONs logs files
+    Load a JSON file and insert data into time, user and songplay tables.
+
+    Keyword arguments:
+    cur --  cursor (psycopg2)
+    filepath -- JSON file path 
     """
 
     # open log file
@@ -69,6 +77,16 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+     """
+    Get all JSON files from filepath and apply funtion.
+
+    Keyword arguments:
+    cur --  cursor (psycopg2)
+    conn --  connection to database 
+    filepath -- JSON file path 
+    func -- process_song_file or process_log_file
+    """
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -88,10 +106,14 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    # connect to spyrkifydb database 
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
+    # process songs data
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
+
+    # process logs data
     process_data(cur, conn, filepath='data/log_data', func=process_log_file)
 
     conn.close()
