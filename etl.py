@@ -72,12 +72,12 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-        songplay_data = (index, pd.to_datetime(row.ts, unit='ms'), row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
+        songplay_data = (pd.to_datetime(row.ts, unit='ms'), row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
 
 def process_data(cur, conn, filepath, func):
-     """
+    """
     Get all JSON files from filepath and apply funtion.
 
     Keyword arguments:
@@ -86,8 +86,9 @@ def process_data(cur, conn, filepath, func):
     filepath -- JSON file path 
     func -- process_song_file or process_log_file
     """
-
+    
     # get all files matching extension from directory
+
     all_files = []
     for root, dirs, files in os.walk(filepath):
         files = glob.glob(os.path.join(root,'*.json'))
