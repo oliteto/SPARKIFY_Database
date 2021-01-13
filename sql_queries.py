@@ -96,7 +96,10 @@ user_table_insert = ("""
         gender, 
         level
     )
-        VALUES (%s, %s, %s, %s, %s);
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (user_id)
+        DO UPDATE
+            SET level = EXCLUDED.level;
 """)
 
 song_table_insert = ("""
@@ -108,7 +111,9 @@ song_table_insert = ("""
         year, 
         duration
     )
-        VALUES (%s, %s, %s, %s, %s);
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (song_id)
+        DO NOTHING;
 """)
 
 artist_table_insert = ("""
@@ -120,7 +125,9 @@ artist_table_insert = ("""
         latitude, 
         longitude
     )
-        VALUES (%s, %s, %s, %s, %s);
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (artist_id)
+        DO NOTHING;
 """)
 
 time_table_insert = ("""
@@ -134,7 +141,9 @@ time_table_insert = ("""
         year, 
         weekday
     )
-        VALUES (%s, %s, %s, %s, %s, %s, %s);
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        ON CONFLICT (start_time)
+        DO NOTHING;
 """)
 
 # FIND SONGS
